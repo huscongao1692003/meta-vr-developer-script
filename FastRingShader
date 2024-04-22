@@ -1,4 +1,4 @@
-Shader "Softspace/FastRing" {
+Shader "FastRing" {
 	Properties {
 		_LineColor ("Line Color", Vector) = (1,1,1,1)
 		_LineThickness ("Line Thickness", Range(0.001, 0.2)) = 0.01
