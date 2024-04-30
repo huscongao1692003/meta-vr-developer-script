@@ -7,8 +7,11 @@ public class PassthroughtToggle : MonoBehaviour
 {
    
     private Button button;
+    public OVRPassthroughLayer passthroughLayer;
+    bool isPassthroughEnabled;
 
-   
+
+
     void Start()
     {
         button = GetComponent<Button>();
@@ -19,19 +22,24 @@ public class PassthroughtToggle : MonoBehaviour
     // Function to toggle between passthrough and VR mode
     void TogglePassthrough()
     {
-        // Check the current state of passthrough mode
-        bool isPassthroughEnabled = OVRManager.instance.virtualGreenScreenType != OVRManager.VirtualGreenScreenType.Off;
+
+        if(passthroughLayer.enabled == false)
+        {
+            isPassthroughEnabled = false;
+        }
+        else
+        {
+            isPassthroughEnabled = true;
+        }
 
         // Toggle passthrough mode
         if (isPassthroughEnabled)
         {
-            // Disable passthrough mode
-            OVRManager.instance.virtualGreenScreenType = OVRManager.VirtualGreenScreenType.Off;
+            passthroughLayer.enabled = false;
         }
         else
         {
-            // Enable passthrough mode
-            OVRManager.instance.virtualGreenScreenType = OVRManager.VirtualGreenScreenType.OuterBoundary;
+            passthroughLayer.enabled = true;
         }
     }
 }
